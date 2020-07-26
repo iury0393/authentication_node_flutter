@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-    "dev:server": "ts-node-dev  --respawn --no-notify --ignore-watch node_modules src/server.ts"
+    "dev:server": "ts-node-dev  --respawn --no-notify --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "license": "MIT",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "pg": "^8.3.0",
+    "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {
