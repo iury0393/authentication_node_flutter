@@ -15,6 +15,10 @@ class _IntroScreenState extends State<IntroScreen> {
     Navigator.pushNamed(context, LoginScreen.id);
   }
 
+  void _onSkip(context) {
+    Navigator.pushNamed(context, LoginScreen.id);
+  }
+
   Widget _buildImage(String assetName) {
     return Align(
       child: Image.asset('assets/$assetName.jpg', width: 350.0),
@@ -39,64 +43,52 @@ class _IntroScreenState extends State<IntroScreen> {
         PageViewModel(
           title: "Objetivo do Projeto",
           body:
-              "Projeto criado para Treinar autenticação/registro e animações.",
+              "Projeto criado para treinar autenticação/registro e animações.",
           image: _buildImage('img1'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Tecnologias",
-          body: "Backend.",
+          body:
+              "Backend: Node.Js/TypeScript,\nDatabase: Postgresql/Docker,\nMobile: Flutter.",
           image: _buildImage('img2'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
+          title: "Padrões de Projeto",
           body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+              "Foi utilizado nesse projeto os padrões TypeORM, para conexão com a database, e o DDD, para o Node.JS.",
           image: _buildImage('img3'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Another title page",
-          body: "Another beautiful body text for this example onboarding",
-          image: _buildImage('img2'),
-          footer: RaisedButton(
-            onPressed: () {
-              introKey.currentState?.animateScroll(0);
-            },
-            child: const Text(
-              'FooButton',
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.lightBlue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
+          title: "Aprendizado",
+          body:
+              "Fazer projetos pequenos para enraizar os conhecimentos nas tecnologias utilizadas",
+          image: _buildImage('img4'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Title of last page",
+          title: "Flutter Auth",
           bodyWidget: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
+              Text("Projeto base de autenticação ", style: bodyStyle),
+              Icon(Icons.lock),
             ],
           ),
-          image: _buildImage('img1'),
+          image: _buildImage('img5'),
           decoration: pageDecoration,
         ),
       ],
       onDone: () => _onIntroEnd(context),
-      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+      onSkip: () => _onSkip(context), // You can override onSkip callback
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
-      skip: const Text('Skip'),
+      skip: const Text('Pular'),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('Feito', style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
         color: Color(0xFFBDBDBD),
