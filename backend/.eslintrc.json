@@ -20,6 +20,7 @@
       "@typescript-eslint"
   ],
   "rules": {
+    "no-console": "off",
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
     "camelcase": "off",
