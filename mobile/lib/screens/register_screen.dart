@@ -1,4 +1,4 @@
-import 'package:authentication/screens/register_screen.dart';
+import 'package:authentication/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -6,16 +6,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String id = '/login';
-
+class RegisterScreen extends StatefulWidget {
+  static const String id = '/register';
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   String email;
   String password;
+  String name;
   bool passwordVisible = true;
 
   @override
@@ -43,11 +43,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Text(
-              'Projeto para treino de autenticação com Flutter.\n Entre por aqui.',
+              'Projeto para treino de autenticação com Flutter.\n Se registre aqui.',
               style: GoogleFonts.roboto(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 fontStyle: FontStyle.normal,
+              ),
+            ),
+            TextField(
+              onChanged: (value) {
+                name = value;
+              },
+              decoration: kTextFieldDecoration.copyWith(
+                hintText: 'Digite seu nome',
+                prefixIcon: Icon(FeatherIcons.user),
               ),
             ),
             TextField(
@@ -81,46 +90,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 42.0,
-                  width: 150.0,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: kButtonColor,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: IconButton(
+            Container(
+              height: 42.0,
+              width: 150.0,
+              decoration: BoxDecoration(
+                  border: Border.all(
                     color: kButtonColor,
-                    icon: Icon(Icons.fingerprint),
-                    onPressed: () => {},
+                    width: 1,
                   ),
-                ),
-                Container(
-                  height: 42.0,
-                  width: 150.0,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: kButtonColor,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: IconButton(
-                    color: kButtonColor,
-                    icon: Icon(FeatherIcons.logIn),
-                    onPressed: () => {},
-                  ),
-                ),
-              ],
+                  borderRadius: BorderRadius.circular(30.0)),
+              child: IconButton(
+                color: kButtonColor,
+                icon: Icon(FeatherIcons.check),
+                onPressed: () => {},
+              ),
             ),
             FlatButton(
               onPressed: () => {
-                Navigator.pushNamed(context, RegisterScreen.id),
+                Navigator.pushNamed(context, LoginScreen.id),
               },
               child: Text(
-                'Crie uma conta',
+                'Volte ao login',
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
