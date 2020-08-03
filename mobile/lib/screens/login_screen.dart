@@ -1,3 +1,5 @@
+import 'package:authentication/components/action_button.dart';
+import 'package:authentication/components/text_info.dart';
 import 'package:authentication/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,30 +27,36 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'Bem-vindo ao',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
-                fontWeight: FontWeight.w300,
-                fontStyle: FontStyle.normal,
-              ),
+            SizedBox(
+              height: 250,
             ),
-            Text(
-              'FlAuth',
-              style: GoogleFonts.roboto(
-                fontSize: 38,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.normal,
-              ),
+            TextInfo(
+              text: 'Bem-vindo ao',
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
             ),
-            Text(
-              'Projeto para treino de autenticação com Flutter.\n Entre por aqui.',
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                fontStyle: FontStyle.normal,
-              ),
+            TextInfo(
+              text: 'FlAuth',
+              fontSize: 38,
+              fontWeight: FontWeight.bold,
+            ),
+            TextInfo(
+              text: 'Projeto para treino de autenticação com Flutter.',
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            TextInfo(
+              text: 'Entre por aqui.',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(
+              height: 30,
             ),
             TextField(
               keyboardType: TextInputType.emailAddress,
@@ -59,6 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintText: 'Digite seu email',
                 prefixIcon: Icon(Icons.email),
               ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextField(
               obscureText: passwordVisible,
@@ -81,50 +92,39 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 30,
+            ),
             Row(
               children: <Widget>[
-                Container(
-                  height: 42.0,
-                  width: 150.0,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: kButtonColor,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: IconButton(
-                    color: kButtonColor,
-                    icon: Icon(Icons.fingerprint),
-                    onPressed: () => {},
+                Expanded(
+                  child: ActionButton(
+                    btnIcon: Icons.fingerprint,
+                    btnFnc: () => {},
                   ),
                 ),
-                Container(
-                  height: 42.0,
-                  width: 150.0,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: kButtonColor,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: IconButton(
-                    color: kButtonColor,
-                    icon: Icon(FeatherIcons.logIn),
-                    onPressed: () => {},
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: ActionButton(
+                    btnIcon: FeatherIcons.logIn,
+                    btnFnc: () => {},
                   ),
                 ),
               ],
             ),
-            FlatButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, RegisterScreen.id),
-              },
-              child: Text(
-                'Crie uma conta',
-                style: GoogleFonts.roboto(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
+            Container(
+              child: Center(
+                child: FlatButton(
+                  onPressed: () => {
+                    Navigator.pushNamed(context, RegisterScreen.id),
+                  },
+                  child: TextInfo(
+                    text: 'Crie uma conta',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             )
