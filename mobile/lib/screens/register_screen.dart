@@ -1,8 +1,9 @@
+import 'package:authentication/components/action_button.dart';
+import 'package:authentication/components/text_info.dart';
 import 'package:authentication/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
 
@@ -25,30 +26,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'Bem-vindo ao',
-              style: GoogleFonts.roboto(
-                fontSize: 20,
-                fontWeight: FontWeight.w300,
-                fontStyle: FontStyle.normal,
-              ),
+            SizedBox(
+              height: 250,
             ),
-            Text(
-              'FlAuth',
-              style: GoogleFonts.roboto(
-                fontSize: 38,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.normal,
-              ),
+            TextInfo(
+              text: 'Bem-vindo ao',
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
             ),
-            Text(
-              'Projeto para treino de autenticação com Flutter.\n Se registre aqui.',
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                fontStyle: FontStyle.normal,
-              ),
+            TextInfo(
+              text: 'FlAuth',
+              fontSize: 38,
+              fontWeight: FontWeight.bold,
+            ),
+            TextInfo(
+              text: 'Projeto para treino de autenticação com Flutter.',
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            TextInfo(
+              text: 'Registre-se por aqui.',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(
+              height: 30,
             ),
             TextField(
               onChanged: (value) {
@@ -59,6 +66,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 prefixIcon: Icon(FeatherIcons.user),
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
             TextField(
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
@@ -68,6 +78,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 hintText: 'Digite seu email',
                 prefixIcon: Icon(Icons.email),
               ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextField(
               obscureText: passwordVisible,
@@ -90,34 +103,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            Container(
-              height: 42.0,
-              width: 150.0,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: kButtonColor,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: IconButton(
-                color: kButtonColor,
-                icon: Icon(FeatherIcons.check),
-                onPressed: () => {},
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: ActionButton(
+                btnIcon: FeatherIcons.check,
+                btnFnc: () => {},
               ),
             ),
-            FlatButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, LoginScreen.id),
-              },
-              child: Text(
-                'Volte ao login',
-                style: GoogleFonts.roboto(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
+            Container(
+              child: Center(
+                child: FlatButton(
+                  onPressed: () => {
+                    Navigator.pushNamed(context, LoginScreen.id),
+                  },
+                  child: TextInfo(
+                    text: 'Volte ao login',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
