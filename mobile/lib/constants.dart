@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kButtonColor = Color(0xFF567DF4);
+const kButtonColor = Colors.black;
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter value',
@@ -9,11 +9,11 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(15.0)),
   ),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+    borderSide: BorderSide(color: Colors.black, width: 1.0),
     borderRadius: BorderRadius.all(Radius.circular(15.0)),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+    borderSide: BorderSide(color: Colors.black, width: 2.0),
     borderRadius: BorderRadius.all(Radius.circular(15.0)),
   ),
 );
