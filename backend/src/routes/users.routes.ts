@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ListUsersService from 'services/ListUsersService';
+import ListUsersService from '../services/ListUsersService';
 import CreateUserService from '../services/CreateUserService';
 import GetUserService from '../services/GetUserService';
 

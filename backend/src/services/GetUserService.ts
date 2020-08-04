@@ -10,7 +10,7 @@ export default class GetUserService {
     const userRepository = getRepository(User);
 
     const getUser = await userRepository.find({
-      select: ['name', 'email'],
+      select: ['id', 'name', 'email'],
       where: { email },
     });
 

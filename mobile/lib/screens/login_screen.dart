@@ -21,9 +21,18 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
   bool passwordVisible = true;
+  String username;
 
-  void listUsers() {
-    print(authModel.getAllUsers());
+  void getAllUsers() async {
+    var usersData = await authModel.getAllUsers();
+
+    print(usersData);
+  }
+
+  void getOneUser() async {
+    var userData = await authModel.getOneUsers();
+
+    print(userData);
   }
 
   @override
@@ -113,7 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(
                       child: ActionButton(
                         btnIcon: Icons.fingerprint,
-                        btnFnc: () {},
+                        btnFnc: () {
+                          getOneUser();
+                        },
                       ),
                     ),
                     SizedBox(
@@ -123,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ActionButton(
                         btnIcon: FeatherIcons.logIn,
                         btnFnc: () {
-                          listUsers();
+                          getAllUsers();
                         },
                       ),
                     ),
