@@ -1,6 +1,7 @@
 import 'package:authentication/components/action_button.dart';
 import 'package:authentication/components/text_info.dart';
 import 'package:authentication/screens/register_screen.dart';
+import 'package:authentication/services/auth.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,9 +17,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthModel authModel = AuthModel();
   String email;
   String password;
   bool passwordVisible = true;
+
+  void listUsers() {
+    print(authModel.getAllUsers());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(
                       child: ActionButton(
                         btnIcon: Icons.fingerprint,
-                        btnFnc: () => {},
+                        btnFnc: () {},
                       ),
                     ),
                     SizedBox(
@@ -116,7 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(
                       child: ActionButton(
                         btnIcon: FeatherIcons.logIn,
-                        btnFnc: () => {},
+                        btnFnc: () {
+                          listUsers();
+                        },
                       ),
                     ),
                   ],
@@ -124,8 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   child: Center(
                     child: FlatButton(
-                      onPressed: () => {
-                        Navigator.pushNamed(context, RegisterScreen.id),
+                      onPressed: () {
+                        Navigator.pushNamed(context, RegisterScreen.id);
                       },
                       child: TextInfo(
                         text: 'Crie uma conta',

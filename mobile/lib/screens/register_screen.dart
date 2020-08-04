@@ -117,14 +117,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Center(
                   child: ActionButton(
                     btnIcon: FeatherIcons.check,
-                    btnFnc: () => {},
+                    btnFnc: () {},
                   ),
                 ),
                 Container(
                   child: Center(
                     child: FlatButton(
-                      onPressed: () => {
-                        Navigator.pushNamed(context, LoginScreen.id),
+                      onPressed: () {
+                        Navigator.pushNamed(context, LoginScreen.id);
                       },
                       child: TextInfo(
                         text: 'Volte ao login',
