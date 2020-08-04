@@ -1,5 +1,6 @@
 import 'package:authentication/screens/intro_screen.dart';
 import 'package:authentication/screens/login_screen.dart';
+import 'package:authentication/screens/main_screen.dart';
 import 'package:authentication/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         IntroScreen.id: (context) => IntroScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegisterScreen.id: (context) => RegisterScreen(),
+        MainScreen.id: (context) => MainScreen(),
       },
     );
   }

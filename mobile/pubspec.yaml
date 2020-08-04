@@ -17,6 +17,7 @@ dependencies:
   google_fonts: ^1.1.0
   flutter_feather_icons: ^1.0.3
   flare_flutter: ^2.0.5
+  dio: ^3.0.9
 
 dev_dependencies:
   flutter_test:
