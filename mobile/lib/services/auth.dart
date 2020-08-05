@@ -20,10 +20,18 @@ class AuthModel {
     return userData;
   }
 
-  Future<dynamic> postUser() async {
+  Future<dynamic> signInUser() async {
     NetworkHelper networkHelper = NetworkHelper('$apiUrl/users');
 
-    var userData = await networkHelper.postData();
+    var userData = await networkHelper.signInUser();
+
+    return userData;
+  }
+
+  Future<dynamic> signUpUser() async {
+    NetworkHelper networkHelper = NetworkHelper('$apiUrl/sessions');
+
+    var userData = await networkHelper.signInUser();
 
     return userData;
   }

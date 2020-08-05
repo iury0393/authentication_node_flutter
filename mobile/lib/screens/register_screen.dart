@@ -22,8 +22,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String name;
   bool passwordVisible = true;
 
-  void postUsers() async {
-    var userData = await authModel.postUser();
+  void signInUser() async {
+    var userData = await authModel.signInUser();
 
     print(userData);
   }
@@ -126,7 +126,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ActionButton(
                     btnIcon: FeatherIcons.check,
                     btnFnc: () {
-                      postUsers();
+                      print([name, email, password]);
+                      //signInUser();
                     },
                   ),
                 ),
