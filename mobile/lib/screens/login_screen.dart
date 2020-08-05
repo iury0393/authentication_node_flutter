@@ -35,10 +35,15 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          FlareActor(
-            'assets/sign_in_bg_animation.flr',
-            animation: 'Flow',
-            fit: BoxFit.cover,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            alignment: Alignment.center,
+            child: FlareActor(
+              'assets/sign_in_bg_animation.flr',
+              animation: 'Flow',
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 50),

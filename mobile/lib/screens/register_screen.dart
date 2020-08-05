@@ -45,10 +45,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          FlareActor(
-            'assets/Flow_background.flr',
-            animation: 'Flow',
-            fit: BoxFit.cover,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 2,
+            child: FlareActor(
+              'assets/Flow_background.flr',
+              animation: 'Flow',
+              fit: BoxFit.cover,
+              antialias: false,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 50),
@@ -145,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Center(
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, LoginScreen.id);
+                        Navigator.pop(context);
                       },
                       child: TextInfo(
                         text: 'Volte ao login',
