@@ -19,4 +19,12 @@ class AuthModel {
 
     return userData;
   }
+
+  Future<dynamic> postUser() async {
+    NetworkHelper networkHelper = NetworkHelper('$apiUrl/users');
+
+    var userData = await networkHelper.postData();
+
+    return userData;
+  }
 }

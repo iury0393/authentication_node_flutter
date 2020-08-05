@@ -1,6 +1,7 @@
 import 'package:authentication/components/action_button.dart';
 import 'package:authentication/components/text_info.dart';
 import 'package:authentication/screens/login_screen.dart';
+import 'package:authentication/services/auth.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,10 +16,17 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  AuthModel authModel = AuthModel();
   String email;
   String password;
   String name;
   bool passwordVisible = true;
+
+  void postUsers() async {
+    var userData = await authModel.postUser();
+
+    print(userData);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +125,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Center(
                   child: ActionButton(
                     btnIcon: FeatherIcons.check,
-                    btnFnc: () {},
+                    btnFnc: () {
+                      postUsers();
+                    },
                   ),
                 ),
                 Container(
