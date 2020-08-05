@@ -1,4 +1,5 @@
 import 'package:authentication/components/action_button.dart';
+import 'package:authentication/components/model_alert.dart';
 import 'package:authentication/components/text_info.dart';
 import 'package:authentication/screens/login_screen.dart';
 import 'package:authentication/services/auth.dart';
@@ -18,17 +19,24 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   AuthModel authModel = AuthModel();
+  ModelAlert modelAlert = ModelAlert();
   String email;
   String password;
   String name;
   bool passwordVisible = true;
 
   void signInUser(name, email, password) async {
-    var userData = await authModel.signInUser(name, email, password);
+    try {
+      var userData = await authModel.signInUser(name, email, password);
 
-    print(userData);
+      print(userData);
 
-    Platform.isIOS ? iOSAlert() : androidAlert();
+      Platform.isIOS
+          ? modelAlert.iOSAlertOk(context)
+          : modelAlert.androidAlertOk(context);
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -130,7 +138,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     btnIcon: FeatherIcons.check,
                     btnFnc: () {
                       signInUser(name, email, password);
-                      Navigator.pushNamed(context, LoginScreen.id);
                     },
                   ),
                 ),
