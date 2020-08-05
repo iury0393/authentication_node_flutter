@@ -6,6 +6,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'dart:io' show Platform;
 
 import '../constants.dart';
 
@@ -22,10 +23,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String name;
   bool passwordVisible = true;
 
-  void signInUser() async {
-    var userData = await authModel.signInUser();
+  void signInUser(name, email, password) async {
+    var userData = await authModel.signInUser(name, email, password);
 
     print(userData);
+
+    Platform.isIOS ? iOSAlert() : androidAlert();
   }
 
   @override
@@ -126,8 +129,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ActionButton(
                     btnIcon: FeatherIcons.check,
                     btnFnc: () {
-                      print([name, email, password]);
-                      //signInUser();
+                      signInUser(name, email, password);
+                      Navigator.pushNamed(context, LoginScreen.id);
                     },
                   ),
                 ),

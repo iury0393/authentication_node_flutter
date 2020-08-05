@@ -20,13 +20,10 @@ class NetworkHelper {
     }
   }
 
-  Future signInUser() async {
+  Future signInUser(name, email, password) async {
     try {
-      Response response = await Dio().post(url, data: {
-        'name': 'Jefferson Brandão',
-        'email': 'jeff@gmail.com',
-        'password': '123456'
-      });
+      Response response = await Dio().post(url,
+          data: {'name': '$name', 'email': '$email', 'password': '$password'});
 
       if (response.statusCode == 200) {
         //print(response.data);
