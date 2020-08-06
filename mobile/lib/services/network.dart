@@ -20,7 +20,7 @@ class NetworkHelper {
     }
   }
 
-  Future signInUser(name, email, password) async {
+  Future signUpUser(name, email, password) async {
     try {
       Response response = await Dio().post(url,
           data: {'name': '$name', 'email': '$email', 'password': '$password'});
@@ -36,7 +36,7 @@ class NetworkHelper {
     }
   }
 
-  Future signUpUser() async {
+  Future signInUser() async {
     try {
       Response response = await Dio()
           .post(url, data: {'email': 'jeff@gmail.com', 'password': '123456'});
