@@ -4,8 +4,15 @@ class MainScreen extends StatelessWidget {
   static const String id = '/main';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Hello World'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FlAuth'),
+      ),
+      body: Center(
+        child: Container(
+          child: Text('Hello World'),
+        ),
+      ),
     );
   }
 }

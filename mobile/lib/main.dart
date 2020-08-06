@@ -3,8 +3,10 @@ import 'package:authentication/screens/login_screen.dart';
 import 'package:authentication/screens/main_screen.dart';
 import 'package:authentication/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  await DotEnv().load('.env');
   runApp(MyApp());
 }
 

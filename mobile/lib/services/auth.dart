@@ -1,6 +1,8 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'network.dart';
 
-const apiUrl = 'http://localhost:3333';
+var apiUrl = DotEnv().env['BACKEND_URL'];
 
 class AuthModel {
   //Função que retorna todos usuários
