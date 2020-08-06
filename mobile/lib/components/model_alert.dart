@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
+//Adicionando alerta de sucesso por dispositivo com animação
 class ModelAlert {
   androidAlertOk(BuildContext context) {
     Widget okButton = FlatButton(
