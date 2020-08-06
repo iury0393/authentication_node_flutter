@@ -31,6 +31,7 @@ class AuthModel {
     return userData;
   }
 
+  //Função que loga o usuário
   Future<dynamic> signInUser() async {
     NetworkHelper networkHelper = NetworkHelper('$apiUrl/sessions');
 

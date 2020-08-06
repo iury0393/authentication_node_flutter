@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool passwordVisible = true;
   String username;
 
+  //Chamada para fazer o login
   void signInUser() async {
     //var userData = await authModel.signInUser();
 

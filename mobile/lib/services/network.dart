@@ -37,6 +37,7 @@ class NetworkHelper {
     }
   }
 
+  //Para o login do novo usuário
   Future signInUser() async {
     try {
       Response response = await Dio()
