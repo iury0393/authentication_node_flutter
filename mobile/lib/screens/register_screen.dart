@@ -39,6 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
+  //Correção das animações
   @override
   Widget build(BuildContext context) {
     return Scaffold(
