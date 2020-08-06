@@ -140,6 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ActionButton(
                           btnIcon: FeatherIcons.logIn,
                           btnFnc: () {
+                            //Integrando login
                             signInUser();
                           },
                         ),
