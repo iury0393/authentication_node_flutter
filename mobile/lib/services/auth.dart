@@ -3,6 +3,7 @@ import 'network.dart';
 const apiUrl = 'http://localhost:3333';
 
 class AuthModel {
+  //Função que retorna todos usuários
   Future<dynamic> getAllUsers() async {
     NetworkHelper networkHelper = NetworkHelper('$apiUrl/users');
 
@@ -11,6 +12,7 @@ class AuthModel {
     return usersData;
   }
 
+  //Função que retorna 1 usuário
   Future<dynamic> getOneUsers() async {
     NetworkHelper networkHelper =
         NetworkHelper('$apiUrl/users/iury0393@gmail.com');
@@ -20,6 +22,7 @@ class AuthModel {
     return userData;
   }
 
+  //Função que registra usuário
   Future<dynamic> signUpUser(name, email, password) async {
     NetworkHelper networkHelper = NetworkHelper('$apiUrl/users');
 

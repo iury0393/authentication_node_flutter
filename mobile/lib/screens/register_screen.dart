@@ -24,6 +24,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String name;
   bool passwordVisible = true;
 
+  //Chamada para fazer o registro
   void signUpUser(name, email, password) async {
     try {
       var userData = await authModel.signUpUser(name, email, password);

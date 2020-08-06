@@ -4,7 +4,7 @@ class NetworkHelper {
   NetworkHelper(this.url);
 
   final String url;
-
+  //Para retornar usuário
   Future getData() async {
     try {
       Response response = await Dio().get(url);
@@ -20,6 +20,7 @@ class NetworkHelper {
     }
   }
 
+  //Para o registro de novo usuário
   Future signUpUser(name, email, password) async {
     try {
       Response response = await Dio().post(url,
