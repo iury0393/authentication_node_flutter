@@ -143,6 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: ActionButton(
                       btnIcon: FeatherIcons.check,
                       btnFnc: () {
+                        //Integrando registro
                         signUpUser(name, email, password);
                       },
                     ),
