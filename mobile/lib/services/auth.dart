@@ -32,10 +32,10 @@ class AuthModel {
   }
 
   //Função que loga o usuário
-  Future<dynamic> signInUser() async {
+  Future<dynamic> signInUser(email, password) async {
     NetworkHelper networkHelper = NetworkHelper('$apiUrl/sessions');
 
-    var userData = await networkHelper.signInUser();
+    var userData = await networkHelper.signInUser(email, password);
 
     return userData;
   }
