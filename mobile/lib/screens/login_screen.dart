@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         : modelAlert.androidAlertOk(context);
   }
 
-  //Correção das animações
+  //Correção das animações e adicionando o scroll
   @override
   Widget build(BuildContext context) {
     return Scaffold(

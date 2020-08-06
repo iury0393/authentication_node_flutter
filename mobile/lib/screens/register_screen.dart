@@ -39,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  //Correção das animações
+  //Correção das animações e adicionando o scroll
   @override
   Widget build(BuildContext context) {
     return Scaffold(
