@@ -1,15 +1,14 @@
-import 'package:authentication/screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 //Adicionando alerta de sucesso por dispositivo com animação
 class ModelAlert {
-  androidAlertOk(BuildContext context) {
+  androidAlertOk(context, route) {
     Widget okButton = FlatButton(
       child: Text("OK"),
       onPressed: () {
-        Navigator.pushNamed(context, LoginScreen.id);
+        Navigator.pushNamed(context, route);
       },
     );
 
@@ -37,11 +36,11 @@ class ModelAlert {
     );
   }
 
-  iOSAlertOk(BuildContext context) {
+  iOSAlertOk(context, route) {
     Widget okButton = FlatButton(
       child: Text("OK"),
       onPressed: () {
-        Navigator.pushNamed(context, LoginScreen.id);
+        Navigator.pushNamed(context, route);
       },
     );
 
