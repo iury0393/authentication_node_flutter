@@ -27,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool passwordVisible = true;
   String username;
 
-  //Chamada para fazer o login
   void _signInUser(email, password) async {
     try {
       var userData = await _authModel.signInUser(email, password);
@@ -46,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  //Correção das animações e adicionando o scroll
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,7 +147,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ActionButton(
                         btnIcon: FeatherIcons.logIn,
                         btnFnc: () {
-                          //Integrando login
                           _signInUser(email, password);
                         },
                       ),

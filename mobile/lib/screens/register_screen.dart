@@ -44,7 +44,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  //Correção das animações e adicionando o scroll
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,7 +147,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ActionButton(
                     btnIcon: FeatherIcons.check,
                     btnFnc: () {
-                      //Integrando registro
                       _signUpUser(name, email, password);
                     },
                   ),
