@@ -9,6 +9,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'dart:io' show Platform;
 
 import '../constants.dart';
@@ -27,9 +28,13 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
   bool passwordVisible = true;
+  bool showSpinner = false;
   String username;
 
   void _signInUser(email, password) async {
+    setState(() {
+      showSpinner = true;
+    });
     try {
       var userData = await _authModel.signInUser(email, password);
       token = Token.fromJson(userData);
@@ -40,6 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
         Platform.isIOS
             ? _modelAlert.iOSAlertOk(context, MainScreen.id)
             : _modelAlert.androidAlertOk(context, MainScreen.id);
+        setState(() {
+          showSpinner = false;
+        });
       } else {
         print(userData);
       }
@@ -52,128 +60,131 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: FlareActor(
-              'assets/sign_in_bg_animation.flr',
-              animation: 'Flow',
-              fit: BoxFit.cover,
-              antialias: false,
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: FlareActor(
+                'assets/sign_in_bg_animation.flr',
+                animation: 'Flow',
+                fit: BoxFit.cover,
+                antialias: false,
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            padding: EdgeInsets.all(30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: 250,
-                ),
-                TextInfo(
-                  text: 'Bem-vindo ao',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-                TextInfo(
-                  text: 'FlAuth',
-                  fontSize: 38,
-                  fontWeight: FontWeight.bold,
-                ),
-                TextInfo(
-                  text: 'Projeto para treino de autenticação com Flutter.',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                TextInfo(
-                  text: 'Entre por aqui.',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Digite seu email',
-                    prefixIcon: Icon(Icons.email),
+            SingleChildScrollView(
+              padding: EdgeInsets.all(30.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 250,
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                TextField(
-                  obscureText: passwordVisible,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  inputFormatters: [LengthLimitingTextInputFormatter(10)],
-                  decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Digite sua senha',
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: IconButton(
-                      icon: Icon(passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off),
-                      onPressed: () {
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
-                      },
+                  TextInfo(
+                    text: 'Bem-vindo ao',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  TextInfo(
+                    text: 'FlAuth',
+                    fontSize: 38,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  TextInfo(
+                    text: 'Projeto para treino de autenticação com Flutter.',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextInfo(
+                    text: 'Entre por aqui.',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Digite seu email',
+                      prefixIcon: Icon(Icons.email),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ActionButton(
-                        btnIcon: Icons.fingerprint,
-                        btnFnc: () {},
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: ActionButton(
-                        btnIcon: FeatherIcons.logIn,
-                        btnFnc: () {
-                          _signInUser(email, password);
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    obscureText: passwordVisible,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                    decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Digite sua senha',
+                      prefixIcon: Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: Icon(passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            passwordVisible = !passwordVisible;
+                          });
                         },
                       ),
                     ),
-                  ],
-                ),
-                Container(
-                  child: Center(
-                    child: FlatButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, RegisterScreen.id);
-                      },
-                      child: TextInfo(
-                        text: 'Crie uma conta',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: ActionButton(
+                          btnIcon: Icons.fingerprint,
+                          btnFnc: () {},
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: ActionButton(
+                          btnIcon: FeatherIcons.logIn,
+                          btnFnc: () {
+                            _signInUser(email, password);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: Center(
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, RegisterScreen.id);
+                        },
+                        child: TextInfo(
+                          text: 'Crie uma conta',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
