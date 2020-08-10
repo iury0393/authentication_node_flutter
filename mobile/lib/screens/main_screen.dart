@@ -1,3 +1,4 @@
+import 'package:authentication/components/user_card.dart';
 import 'package:authentication/models/User.dart';
 import 'package:authentication/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     userList = UserList.fromJson(jsonUsers);
 
     print(userList.users[0].name);
+    print(userList.users[0].email);
   }
 
   @override
@@ -27,10 +29,11 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text('FlAuth'),
         leading: IconButton(
-            icon: Icon(FeatherIcons.logOut),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
+          icon: Icon(FeatherIcons.logOut),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -39,10 +42,8 @@ class _MainScreenState extends State<MainScreen> {
         child: Icon(Icons.add),
         backgroundColor: Colors.blueAccent,
       ),
-      body: Center(
-        child: Container(
-          child: Text('Hello World'),
-        ),
+      body: SafeArea(
+        child: UserCard(),
       ),
     );
   }
