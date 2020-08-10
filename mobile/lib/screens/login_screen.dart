@@ -1,6 +1,7 @@
 import 'package:authentication/components/action_button.dart';
 import 'package:authentication/components/model_alert.dart';
 import 'package:authentication/components/text_info.dart';
+import 'package:authentication/models/Token.dart';
 import 'package:authentication/screens/main_screen.dart';
 import 'package:authentication/screens/register_screen.dart';
 import 'package:authentication/services/auth.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Token token;
   AuthModel _authModel = AuthModel();
   ModelAlert _modelAlert = ModelAlert();
   String email;
@@ -30,9 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void _signInUser(email, password) async {
     try {
       var userData = await _authModel.signInUser(email, password);
+      token = Token.fromJson(userData);
 
-      if (userData != null) {
-        print(userData);
+      if (token.token != null) {
+        print(token.user.email);
 
         Platform.isIOS
             ? _modelAlert.iOSAlertOk(context, MainScreen.id)

@@ -1,13 +1,13 @@
 class User {
-  final String userName;
-  final String userEmail;
+  final String name;
+  final String email;
 
-  User({this.userName, this.userEmail});
+  User({this.name, this.email});
 
-  factory User.fromJson(Map<dynamic, dynamic> json) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      userName: json['name'],
-      userEmail: json['email'],
+      name: json['name'],
+      email: json['email'],
     );
   }
 }
@@ -26,3 +26,7 @@ class UserList {
     );
   }
 }
+
+/*
+* [user:{}]
+*/

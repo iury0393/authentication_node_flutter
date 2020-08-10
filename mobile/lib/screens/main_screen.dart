@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:authentication/models/User.dart';
 import 'package:authentication/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
     var jsonUsers = await _authModel.getAllUsers();
     userList = UserList.fromJson(jsonUsers);
 
-    print(userList.users[0].userName);
+    print(userList.users[0].name);
   }
 
   @override
@@ -36,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          getNameLogged();
+          //getName();
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.blueAccent,
