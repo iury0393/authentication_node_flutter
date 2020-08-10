@@ -19,6 +19,7 @@ dependencies:
   flare_flutter: ^2.0.5
   dio: ^3.0.9
   flutter_dotenv: ^2.1.0
+  modal_progress_hud: ^0.1.3
 
 dev_dependencies:
   flutter_test:

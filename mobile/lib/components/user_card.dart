@@ -13,13 +13,16 @@ class UserCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(
+            height: 25.0,
+          ),
           CircleAvatar(
             radius: 50.0,
             backgroundImage: AssetImage('assets/profile_pic.png'),
           ),
           TextInfo(
             text: name,
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
           SizedBox(

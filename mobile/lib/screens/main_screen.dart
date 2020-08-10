@@ -14,13 +14,26 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   UserList userList;
   AuthModel _authModel = AuthModel();
+  int index;
+  String name;
+  String email;
+
+  @override
+  void initState() {
+    super.initState();
+    getNameLogged();
+  }
 
   Future getNameLogged() async {
-    var jsonUsers = await _authModel.getAllUsers();
-    userList = UserList.fromJson(jsonUsers);
+    try {
+      var jsonUsers = await _authModel.getAllUsers();
 
-    print(userList.users[0].name);
-    print(userList.users[0].email);
+      if (jsonUsers != null) {
+        userList = UserList.fromJson(jsonUsers);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -35,15 +48,16 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //getName();
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blueAccent,
-      ),
       body: SafeArea(
-        child: UserCard(),
+        child: ListView.builder(
+          itemCount: userList.users.length,
+          itemBuilder: (context, index) {
+            return UserCard(
+              name: userList.users[index].name,
+              email: userList.users[index].email,
+            );
+          },
+        ),
       ),
     );
   }
