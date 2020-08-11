@@ -43,13 +43,38 @@ class _LoginScreenState extends State<LoginScreen> {
         print(token.user.email);
 
         Platform.isIOS
-            ? _modelAlert.iOSAlertOk(context, MainScreen.id)
-            : _modelAlert.androidAlertOk(context, MainScreen.id);
+            ? _modelAlert.iOSAlertOk(
+                context,
+                MainScreen.id,
+                'assets/Success_Check.flr',
+                'Untitled',
+              )
+            : _modelAlert.androidAlertOk(
+                context,
+                MainScreen.id,
+                'assets/Success_Check.flr',
+                'Untitled',
+              );
         setState(() {
           showSpinner = false;
         });
       } else {
-        print(userData);
+        Platform.isIOS
+            ? _modelAlert.iOSAlertOk(
+                context,
+                MainScreen.id,
+                'assets/Fail.flr',
+                'pop',
+              )
+            : _modelAlert.androidAlertOk(
+                context,
+                MainScreen.id,
+                'assets/Fail.flr',
+                'pop',
+              );
+        setState(() {
+          showSpinner = false;
+        });
       }
     } catch (e) {
       print(e);

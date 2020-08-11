@@ -4,7 +4,7 @@ import 'package:flare_flutter/flare_actor.dart';
 
 //Adicionando alerta de sucesso por dispositivo com animação
 class ModelAlert {
-  androidAlertOk(context, route) {
+  androidAlertOk(context, route, flare, animation) {
     Widget okButton = FlatButton(
       child: Text("OK"),
       onPressed: () {
@@ -18,8 +18,8 @@ class ModelAlert {
         width: 150,
         height: 150,
         child: FlareActor(
-          'assets/Success_Check.flr',
-          animation: 'Untitled',
+          flare,
+          animation: animation,
           fit: BoxFit.contain,
         ),
       ),
@@ -36,7 +36,7 @@ class ModelAlert {
     );
   }
 
-  iOSAlertOk(context, route) {
+  iOSAlertOk(context, route, flare, animation) {
     Widget okButton = FlatButton(
       child: Text("OK"),
       onPressed: () {
@@ -50,8 +50,8 @@ class ModelAlert {
         width: 150,
         height: 150,
         child: FlareActor(
-          'assets/Success_Check.flr',
-          animation: 'Untitled',
+          flare,
+          animation: animation,
           fit: BoxFit.contain,
         ),
       ),
