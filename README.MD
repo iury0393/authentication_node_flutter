@@ -8,6 +8,9 @@
     <img src="https://img.shields.io/badge/Node-JS-green?style=plastic&logo=Node.JS" alt="NodeJS" />
   </a>
 </p>
+<p align="center"><img src="./assets/intro.gif" /></p>
+<p align="center"><img src="./assets/register1.gif" /></p>
+<p align="center"><img src="./assets/register2.gif" /></p>
 
 ---
 
